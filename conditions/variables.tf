@@ -9,6 +9,11 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
+variable "environment" {
+  type    = string
+  default = "dev"
+}
+
 variable "ec2_tags" {
   type = map(any)
   default = {
@@ -19,9 +24,9 @@ variable "ec2_tags" {
   }
 }
 
-variable "aws_sg_name" {
+variable "aws_sg" {
   type    = string
-  default = "allowall_terraform_default"
+  default = "allow_all"
 }
 
 variable "aws_sg_desc" {

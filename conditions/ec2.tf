@@ -1,6 +1,7 @@
 resource "aws_instance" "demo" {
-  ami                    = var.ami_id
-  instance_type          = var.instance_type
+  ami = var.ami_id
+  #instance_type          = var.instance_type
+  instance_type          = var.environment == "prod" ? "t3.micro" : "t3.small"
   vpc_security_group_ids = [aws_security_group.allow_all.id]
 
 
@@ -9,7 +10,7 @@ resource "aws_instance" "demo" {
 }
 
 resource "aws_security_group" "allow_all" {
-  name        = var.aws_sg_name
+  name        = var.aws_sg
   description = var.aws_sg_desc
 
   ingress {
